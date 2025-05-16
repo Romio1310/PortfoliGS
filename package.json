@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "vercel-build": "next build"
+    "start": "next start"
   },
   "dependencies": {
     "@giscus/react": "^2.3.0",
