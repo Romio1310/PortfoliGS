@@ -19,6 +19,13 @@ export default function Navbar() {
       title: "Blog",
       href: "/blog",
     },
+    // You can modify this list - add or remove sections as needed
+    // For example, you might want to add a Resume section:
+    // {
+    //   title: "Resume",
+    //   href: "/resume",
+    // },
+    // Or remove Photos if you don't plan to have a photo gallery:
     {
       title: "Photos",
       href: "/photos",

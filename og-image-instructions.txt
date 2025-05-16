@@ -1,0 +1,22 @@
+OG Image Creation Steps:
+
+1. Dimensions: Create an image with dimensions 1200×630 pixels
+2. Content: 
+   - Your name: "Gurdeep Singh"
+   - Your profession: "Software Developer"
+   - (Optional) A professional photo of yourself
+3. Colors:
+   - Use the indigo color scheme from your tailwind config (#4F46E5)
+   - Ensure text is clearly readable with good contrast
+4. File Format:
+   - Save as PNG format
+5. Placement:
+   - Save the finished image as "og.png" in your /public folder
+
+You can create this image using:
+- Figma
+- Canva
+- Photoshop
+- Or any online tool like https://og-image.vercel.app/
+
+After creating the image, save it to: /Users/codname_gd/victoreke.com/public/og.png

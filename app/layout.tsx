@@ -7,6 +7,7 @@ import { gitlabmono } from "./assets/font/font";
 import Navbar from "./components/global/Navbar";
 import Footer from "./components/global/Footer";
 import { Providers } from "./providers";
+import Head from "next/head";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,22 +16,37 @@ const inter = Inter({
 });
 
 const options = {
-  title: "Victor Eke | Software Developer",
+  title: "Gurdeep Singh | Software Developer",
   description:
-    "Victor Eke is a Software Developer and Technical Writer who is passionate about building solutions and contributing to open source communities",
-  url: "https://victoreke.com",
-  ogImage:
-    "https://res.cloudinary.com/victoreke/image/upload/v1692635746/victoreke/og.png",
+    "A Computer Science Enthusiast crafting code, chasing innovation, and diving deep into tech. Always up for new challenges and creative projects 🚀",
+  url: "https://gurdeepsingh.tech",
+  ogImage: "/og.png",
 };
+
+// Use a timestamp to force browser to reload favicon
+const timestamp = new Date().getTime();
 
 export const metadata: Metadata = {
   title: options.title,
   metadataBase: new URL(options.url),
   description: options.description,
+  icons: {
+    icon: [
+      { url: `/favicon.ico?v=${timestamp}`, sizes: 'any' },
+      { url: `/icon1.png?v=${timestamp}`, type: 'image/png', sizes: '192x192' },
+      { url: `/icon2.png?v=${timestamp}`, type: 'image/png', sizes: '512x512' },
+      { url: `/icon3.png?v=${timestamp}`, type: 'image/png', sizes: '32x32' },
+      { url: `/icon4.png?v=${timestamp}`, type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [
+      { url: `/apple-icon.png?v=${timestamp}`, sizes: '180x180' }
+    ],
+    shortcut: [{ url: `/favicon.ico?v=${timestamp}` }],
+  },
   openGraph: {
     title: options.title,
     url: options.url,
-    siteName: "victoreke.com",
+    siteName: "gurdeepsingh.tech",
     locale: "en-US",
     type: "website",
     description: options.description,
@@ -40,7 +56,7 @@ export const metadata: Metadata = {
     canonical: options.url,
   },
   other: {
-    "google-site-verification": "IzcWMgn5Qjf-LCtA337KTGjivsf9bmod_1pZ-jxYQh8",
+    "google-site-verification": "yZ_aUN6nCvamtqLDonfQ-D2cDiMEXlLCUaS3yX9T9o",
   },
 };
 
@@ -51,6 +67,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link 
+          rel="icon" 
+          href={`/favicon.ico?v=${timestamp}`} 
+          sizes="any"
+        />
+        <link 
+          rel="shortcut icon" 
+          href={`/favicon.ico?v=${timestamp}`} 
+        />
+        <link 
+          rel="apple-touch-icon" 
+          href={`/apple-icon.png?v=${timestamp}`} 
+        />
+      </head>
       <body
         className={`${incognito.variable} ${inter.className} ${gitlabmono.variable} dark:bg-zinc-900 bg-white dark:text-white text-zinc-700`}
       >

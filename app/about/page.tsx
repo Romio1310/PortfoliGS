@@ -12,17 +12,16 @@ import { sanityFetch } from "@/lib/sanity.client";
 import RefLink from "../components/shared/RefLink";
 
 export const metadata: Metadata = {
-  title: "About | Victor Eke",
-  metadataBase: new URL("https://victoreke.com/about"),
+  title: "About | Gurdeep Singh",
+  metadataBase: new URL("https://gurdeepsingh.tech/about"),
   description:
     "Learn more about my skills, experience and technical background",
   openGraph: {
-    title: "About | Victor Eke",
-    url: "https://victoreke.com/about",
+    title: "About | Gurdeep Singh",
+    url: "https://gurdeepsingh.tech/about",
     description:
       "Learn more about my skills, experience and technical background",
-    images:
-      "https://res.cloudinary.com/victoreke/image/upload/v1692635746/victoreke/og.png",
+    images: "/og.png",
   },
 };
 
@@ -78,15 +77,16 @@ export default async function About() {
                 <div className="flex flex-col text-center gap-y-4">
                   <div className="flex items-center gap-x-3">
                     <RefLink
-                      href="https://www.craft.me/s/WQpQF3jrPIodXp"
+                      href="/resume.pdf"
                       className="flex items-center justify-center text-center gap-x-2 basis-[90%] dark:bg-primary-bg bg-zinc-100 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 rounded-md py-2 text-lg font-incognito font-semibold"
                     >
                       View Résumé <BiLinkExternal className="text-base" />
                     </RefLink>
                     <a
-                      href={`${profile?.resumeURL}?dl=${profile?.fullName}-resume.pdf`}
+                      href="/resume.pdf"
                       className="flex items-center justify-center text-center dark:text-primary-color text-secondary-color hover:underline basis-[10%] dark:bg-primary-bg bg-zinc-100 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 rounded-md py-3 text-lg"
                       title="Download Resume"
+                      download="Gurdeep_Singh_Resume.pdf"
                     >
                       <BiSolidDownload
                         className="text-lg"
