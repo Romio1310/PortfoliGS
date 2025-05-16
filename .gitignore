@@ -47,4 +47,4 @@ backup.ndjson
 *-test.js
 *-test.ts
 test-*.js
-test-*.ts
+test-*.ts.env.local
