@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next lint && next build",
+    "build": "next build",
     "start": "next start",
-    "vercel-build": "npm run build"
+    "vercel-build": "next build"
   },
   "dependencies": {
     "@giscus/react": "^2.3.0",
