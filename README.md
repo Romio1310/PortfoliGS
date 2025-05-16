@@ -1,9 +1,9 @@
 <div align="center">
-<a href="https://victoreke.com"><img src="./public/logo.png" width="60px"></a>
+<a href="https://gurdeepsingh.tech"><img src="./public/logo.png" width="60px"></a>
 </div>
 
 <div align="center">
-<h1>victoreke.com</h1>
+<h1>gurdeepsingh.tech</h1>
 <p>My personal portfolio website</p>
 </div>
 
@@ -13,9 +13,10 @@
 - [Vercel][vercel] - Hosting and Deployment
 - [Sanity.io][sanity]: Headless CMS and Content Lake
 - [TailwindCSS][tailwind] / CSS - Styling and UI
-- [Umami][umami]: Analytics
 - [Next Themes][nexttheme]: Color Theme
 - [React Refractor][reactrefractor]: Syntax Highlighting
+- [React GitHub Calendar][githubcalendar]: GitHub contributions graph
+- [Framer Motion][framermotion]: Animations
 
 ## Project Overview
 
@@ -25,14 +26,14 @@
 
 ## Run Project Locally
 
-Follow this guide to get this site runnning locally:
+Follow this guide to get this site running locally:
 
 ### Clone Repository
 
 ```js
-git clone https://github.com/Evavic44/victoreke.com.git
+git clone https://github.com/Romio1310/PortfoliGS.git
 
-cd victoreke.com
+cd gurdeepsingh.tech
 
 npm install
 ```
@@ -55,7 +56,7 @@ These variables come from Sanity. To get them, you need to setup your own Sanity
 Run the command below in a terminal to create a new Sanity project:
 
 ```js
-npm create sanity@latest -- --template clean --create-project "John Doe" --dataset production
+npm create sanity@latest -- --template clean --create-project "Gurdeep Singh" --dataset production
 ```
 
 - **Create an account**: If you already have a Sanity account, this will automatically connect to it, if not, select a login provider from the list of options, hit `Enter` and follow the prompt to create one.
@@ -65,7 +66,7 @@ npm create sanity@latest -- --template clean --create-project "John Doe" --datas
 Once completed open up the studio directory.
 
 ```js
-cd john-doe
+cd gurdeep-singh
 
 code .
 ```
@@ -88,11 +89,11 @@ Open up the cloned repository and do the following:
 
 By default the UI will be blank. To start adding data to the site, visit your studio at [http://localhost:3000/studio][localhost-studio] to create your own documents.
 
-If you expereinced any issues or enquiries, please raise an issue to discuss it.
+If you experienced any issues or enquiries, please raise an issue to discuss it.
 
 ## Additional Information
 
-Need more guidiance, check out this [tutorial][sanity-guide] that provides a step-by-step guide to setting up Sanity studio for your portfolio site.
+Need more guidance, check out this [tutorial][sanity-guide] that provides a step-by-step guide to setting up Sanity studio for your portfolio site.
 
 ## Build
 
@@ -112,7 +113,7 @@ npm run build
 
 ## License & Usage
 
-This portfolio is MIT-licensed so you are free to use it as an inspiration or you can just copy the whole thing (excluding my personal content of course), I don't really mind. Just make sure you link back to [victoreke.com][site] on the footer section as attribution to the original source.
+This portfolio is MIT-licensed so you are free to use it as an inspiration or you can just copy the whole thing (excluding my personal content of course), I don't really mind. Just make sure you link back to [gurdeepsingh.tech][site] on the footer section as attribution to the original source.
 
 <!-- Link Refs -->
 
@@ -120,17 +121,17 @@ This portfolio is MIT-licensed so you are free to use it as an inspiration or yo
 [vercel]: https://vercel.com
 [sanity]: https://sanity.io
 [tailwind]: https://tailwindcss.com
-[umami]: https://umami.is
-[planetscale]: https://planetscale.com/
 [nexttheme]: https://github.com/pacocoursey/next-themes
 [reactrefractor]: https://github.com/rexxars/react-refractor
-[site]: https://victoreke.com
-[studio]: https://victoreke.com/studio
-[studio-preview]: https://github.com/Evavic44/victoreke.com/assets/62628408/a2574479-a352-4437-ba67-14bd976e48eb
-[site-preview]: https://github.com/Evavic44/victoreke.com/assets/62628408/e84ac72f-1ba1-4c46-bfc0-2512ffa0e5fa
-[env-example]: https://github.com/Evavic44/victoreke.com/blob/main/.env.example
+[framermotion]: https://www.framer.com/motion/
+[githubcalendar]: https://github.com/grubersjoe/react-github-calendar
+[site]: https://gurdeepsingh.tech
+[studio]: https://gurdeepsingh.tech/studio
+[studio-preview]: ./public/studio.png
+[site-preview]: ./public/site.png
+[env-example]: ./.env.example
 [localhost]: http://localhost:3000
 [localhost-studio]: http://localhost:3000/studio
-[env-api]: https://github.com/Evavic44/victoreke.com/blob/main/lib/env.api.ts
+[env-api]: ./lib/env.api.ts
 [sanity-manage]: https://sanity.io/manage
 [sanity-guide]: https://www.freecodecamp.org/news/how-to-build-a-portfolio-site-with-sanity-and-nextjs
