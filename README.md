@@ -143,7 +143,8 @@ npm run build
 
 ## License & Usage
 
-This portfolio is MIT-licensed so you are free to use it as an inspiration or you can just copy the whole thing (excluding my personal content of course), I don't really mind. Just make sure you link back to [gurdeepsingh.tech][site] on the footer section as attribution to the original source.
+This portfolio is MIT-licensed so you are free to use it as an inspiration or you can just copy the whole thing (excluding my personal content of course), I don't really mind. Just make sure you link back to [victoreke.com][site] on the footer section as attribution to the original source.
+And a speciall thanks to victoreke.com [https://github.com/Evavic44?ref=victoreke.com] for his portfolio resources.
 
 <!-- Link Refs -->
 
