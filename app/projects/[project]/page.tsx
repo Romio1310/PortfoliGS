@@ -8,6 +8,7 @@ import { Slide } from "../../animation/Slide";
 import { urlFor } from "@/lib/sanity.image";
 import { sanityFetch } from "@/lib/sanity.client";
 import { BiLinkExternal, BiLogoGithub } from "react-icons/bi";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: {
@@ -21,11 +22,18 @@ const fallbackImage: string =
 // Dynamic metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.project;
-  const project: ProjectType = await sanityFetch({
+  const project = await sanityFetch<ProjectType | null>({
     query: singleProjectQuery,
     tags: ["project"],
-    qParams: { slug },
+    params: { slug },
   });
+  
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+      description: 'The requested project could not be found.'
+    };
+  }
 
   return {
     title: `${project.name} | Project`,
@@ -44,11 +52,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Project({ params }: Props) {
   const slug = params.project;
-  const project: ProjectType = await sanityFetch({
+  const project = await sanityFetch<ProjectType | null>({
     query: singleProjectQuery,
     tags: ["project"],
-    qParams: { slug },
+    params: { slug },
   });
+  
+  if (!project) {
+    notFound();
+  }
 
   return (
     <main className="max-w-6xl mx-auto lg:px-16 px-8">

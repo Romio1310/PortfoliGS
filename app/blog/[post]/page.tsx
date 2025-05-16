@@ -31,10 +31,10 @@ const fallbackImage: string =
 // Dynamic metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.post;
-  const post: PostType = await sanityFetch({
+  const post = await sanityFetch<PostType | null>({
     query: singlePostQuery,
     tags: ["Post"],
-    qParams: { slug },
+    params: { slug },
   });
 
   if (!post) {
@@ -80,17 +80,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Post({ params }: Props) {
   const slug = params.post;
-  const post: PostType = await sanityFetch({
+  const post = await sanityFetch<PostType | null>({
     query: singlePostQuery,
     tags: ["Post"],
-    qParams: { slug },
+    params: { slug },
   });
-
-  const words = toPlainText(post.body);
 
   if (!post) {
     notFound();
   }
+
+  const words = toPlainText(post.body);
 
   return (
     <main className="max-w-7xl mx-auto md:px-16 px-6">

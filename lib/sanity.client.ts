@@ -1,30 +1,41 @@
-import "server-only";
-import { createClient, type ClientConfig, type QueryParams } from "next-sanity";
-import { projectId, dataset, apiVersion, token, mode } from "@/lib/env.api";
+/**
+ * Core Sanity client for data fetching
+ */
+import { createClient } from 'next-sanity'
+import { projectId, dataset, apiVersion, token } from './env.api'
 
-const config: ClientConfig = {
+// Create the main Sanity client
+export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: mode === "development" ? true : false,
-  ignoreBrowserTokenWarning: true,
+  useCdn: false, // Set to false for real-time data
   token,
-  perspective: "published",
-};
+  perspective: 'published',
+  stega: {
+    enabled: false,
+  },
+})
 
-const client = createClient(config);
-
-export async function sanityFetch<QueryResponse>({
-  query,
-  qParams = {},
-  tags,
-}: {
-  query: string;
-  qParams?: QueryParams;
-  tags: string[];
-}): Promise<QueryResponse> {
-  return client.fetch<QueryResponse>(query, qParams, {
-    cache: mode === "development" ? "no-store" : "force-cache",
-    next: { tags },
-  });
+// Type-safe fetch function with proper typing
+export async function sanityFetch<T>({ 
+  query, 
+  params = {}, 
+  tags = [] 
+}: { 
+  query: string; 
+  params?: Record<string, any>; 
+  tags?: string[]; 
+}): Promise<T | null> {
+  try {
+    const result = await client.fetch<T>(query, params, {
+      cache: 'no-store', // Always fetch fresh data
+      next: { tags }
+    })
+    return result
+  } catch (error) {
+    console.error('Sanity fetch error:', error)
+    // Return null instead of throwing to prevent rendering failures
+    return null
+  }
 }

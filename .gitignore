@@ -18,6 +18,9 @@
 # misc
 .DS_Store
 *.pem
+.vscode
+*.log
+*~
 
 # debug
 npm-debug.log*
@@ -26,6 +29,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
@@ -34,6 +38,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.env
+# sanity
 backup.json
 backup.ndjson
+.sanity
+
+# temp files
+*-test.js
+*-test.ts
+test-*.js
+test-*.ts

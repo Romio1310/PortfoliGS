@@ -1,37 +1,29 @@
 import { Metadata } from "next";
-import { BiDetail } from "react-icons/bi";
 import Posts from "../components/pages/Posts";
-import Social from "../components/shared/Social";
+import PageHeading from "../components/shared/PageHeading";
 import { Slide } from "../animation/Slide";
-import PageHeading from "@/app/components/shared/PageHeading";
 
 export const metadata: Metadata = {
   title: "Blog | Gurdeep Singh",
   metadataBase: new URL("https://gurdeepsingh.tech/blog"),
-  description: "Read latest stories from Gurdeep Singh's Blog",
+  description: "Explore Gurdeep Singh's thoughts, insights and experiences through a collection of well-crafted articles on web development, design, and more.",
   openGraph: {
     title: "Blog | Gurdeep Singh",
     url: "https://gurdeepsingh.tech/blog",
-    description: "Read latest stories from Gurdeep Singh's Blog",
+    description: "Explore Gurdeep Singh's thoughts, insights and experiences through a collection of well-crafted articles on web development, design, and more.",
     images: "/og.png",
   },
 };
 
-export default async function Blog() {
+export default function Blog() {
   return (
     <main className="max-w-7xl mx-auto md:px-16 px-6">
       <PageHeading
         title="Blog"
-        description="Welcome to my blog domain where I share personal stories about things I've learned, projects I'm hacking on and just general findings. I also write for other publications."
-      >
-        <Social type="publication" />
-      </PageHeading>
+        description="Welcome to my blog, where I share my thoughts, experiences, and insights on web development, design, and more."
+      />
 
       <Slide delay={0.1}>
-        <div className="flex items-center gap-x-3 mb-8">
-          <BiDetail />
-          <h2 className="text-xl font-semibold tracking-tight">Explore All</h2>
-        </div>
         <Posts />
       </Slide>
     </main>

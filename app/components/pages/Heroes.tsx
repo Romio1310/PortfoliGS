@@ -4,12 +4,17 @@ import EasterEgg from "../shared/EasterEgg";
 import { Slide } from "../../animation/Slide";
 import { sanityFetch } from "@/lib/sanity.client";
 import RefLink from "../shared/RefLink";
+import EmptyState from "../shared/EmptyState";
+import { RiUserStarLine } from "react-icons/ri";
 
 export default async function Heroes() {
-  const heroes: HeroeType[] = await sanityFetch({
+  const heroes = await sanityFetch<HeroeType[]>({
     query: heroesQuery,
     tags: ["heroe"],
   });
+  
+  // Handle potential null response
+  const heroList = heroes || [];
 
   return (
     <section className="mt-32 max-w-5xl">
@@ -31,24 +36,32 @@ export default async function Heroes() {
         </p>
       </Slide>
 
-      <ul className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 mt-12 tracking-tight">
-        {heroes.map((heroe) => (
-          <li
-            key={heroe._id}
-            className="flex items-center gap-x-2 dark:bg-primary-bg bg-zinc-100 border dark:border-zinc-800 border-zinc-200 rounded-md px-2 py-1"
-          >
-            <EasterEgg isMet={heroe.met} />
-            <RefLink
-              href={heroe.url}
-              className={`font-incognito tracking-wide hover:underline ${
-                heroe.met && "dark:text-green-300 text-green-800"
-              }`}
+      {heroList.length > 0 ? (
+        <ul className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 mt-12 tracking-tight">
+          {heroList.map((heroe) => (
+            <li
+              key={heroe._id}
+              className="flex items-center gap-x-2 dark:bg-primary-bg bg-zinc-100 border dark:border-zinc-800 border-zinc-200 rounded-md px-2 py-1"
             >
-              {heroe.name}
-            </RefLink>
-          </li>
-        ))}
-      </ul>
+              <EasterEgg isMet={heroe.met} />
+              <RefLink
+                href={heroe.url}
+                className={`font-incognito tracking-wide hover:underline ${
+                  heroe.met && "dark:text-green-300 text-green-800"
+                }`}
+              >
+                {heroe.name}
+              </RefLink>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <EmptyState 
+          icon={<RiUserStarLine />}
+          title="No Heroes Added Yet"
+          message="We couldn't find any heroes at the moment. Add some through the Sanity studio."
+        />
+      )}
     </section>
   );
 }

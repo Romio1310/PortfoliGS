@@ -3,12 +3,17 @@ import { profileQuery } from "@/lib/sanity.query";
 import type { ProfileType } from "@/types";
 import { CustomPortableTextFavicon } from "../shared/CustomPortableTextFavicon";
 import { sanityFetch } from "@/lib/sanity.client";
+import { notFound } from "next/navigation";
 
 export default async function Usage() {
-  const profile: ProfileType = await sanityFetch({
+  const profile = await sanityFetch<ProfileType | null>({
     query: profileQuery,
     tags: ["profile"],
   });
+  
+  if (!profile) {
+    notFound();
+  }
 
   return (
     <section className="max-w-2xl">
@@ -20,7 +25,7 @@ export default async function Usage() {
         </p>
       </div>
       <PortableText
-        value={profile?.usage}
+        value={profile.usage}
         components={CustomPortableTextFavicon}
       />
     </section>

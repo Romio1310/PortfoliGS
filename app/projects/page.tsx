@@ -5,6 +5,7 @@ import { projectsQuery } from "@/lib/sanity.query";
 import type { ProjectType } from "@/types";
 import EmptyState from "../components/shared/EmptyState";
 import { Slide } from "../animation/Slide";
+// Import the updated Sanity client
 import { sanityFetch } from "@/lib/sanity.client";
 import PageHeading from "../components/shared/PageHeading";
 
@@ -21,10 +22,14 @@ export const metadata: Metadata = {
 };
 
 export default async function Project() {
-  const projects: ProjectType[] = await sanityFetch({
+  // Use the updated client to fetch projects with proper typing
+  const projects = await sanityFetch<ProjectType[]>({
     query: projectsQuery,
     tags: ["project"],
   });
+  
+  // Handle potential null response
+  const projectList = projects || [];
 
   return (
     <main className="max-w-7xl mx-auto md:px-16 px-6">
@@ -34,9 +39,9 @@ export default async function Project() {
       />
 
       <Slide delay={0.1}>
-        {projects.length > 0 ? (
+        {projectList.length > 0 ? (
           <section className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12">
-            {projects.map((project) => (
+            {projectList.map((project) => (
               <Link
                 href={`/projects/${project.slug}`}
                 key={project._id}

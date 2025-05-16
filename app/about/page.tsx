@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 export default async function About() {
-  const profile: ProfileType = await sanityFetch({
+  const profile = await sanityFetch<ProfileType>({
     query: profileQuery,
     tags: ["profile"],
   });

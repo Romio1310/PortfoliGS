@@ -18,6 +18,36 @@
 - [React GitHub Calendar][githubcalendar]: GitHub contributions graph
 - [Framer Motion][framermotion]: Animations
 
+## Quick Start Commands
+
+Here are the commands to properly run this project:
+
+```bash
+# Clone the repository
+git clone https://github.com/Romio1310/PortfoliGS.git
+
+# Navigate to project directory
+cd PortfoliGS
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+# Copy .env.example to .env.local and fill in your Sanity credentials
+cp .env.example .env.local
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+Access your site at http://localhost:3000 and the Sanity Studio at http://localhost:3000/studio
+
 ## Project Overview
 
 | [Site][site]          | [Studio][studio]                 |
@@ -127,8 +157,8 @@ This portfolio is MIT-licensed so you are free to use it as an inspiration or yo
 [githubcalendar]: https://github.com/grubersjoe/react-github-calendar
 [site]: https://gurdeepsingh.tech
 [studio]: https://gurdeepsingh.tech/studio
-[studio-preview]: ./public/studio.png
-[site-preview]: ./public/site.png
+[studio-preview]: ./public/Screenshot 2025-05-16 at 6.25.20 PM.png
+[site-preview]: ./public/Screenshot 2025-05-16 at 7.38.40 PM.png
 [env-example]: ./.env.example
 [localhost]: http://localhost:3000
 [localhost-studio]: http://localhost:3000/studio

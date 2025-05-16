@@ -3,16 +3,21 @@ import { jobQuery } from "@/lib/sanity.query";
 import type { JobType } from "@/types";
 import { formatDate } from "../../utils/date";
 import { Slide } from "../../animation/Slide";
+// Import the updated Sanity client
 import { sanityFetch } from "@/lib/sanity.client";
 import RefLink from "../shared/RefLink";
 import EmptyState from "../shared/EmptyState";
 import { RiBriefcase3Fill } from "react-icons/ri";
 
 export default async function Job() {
-  const jobs: JobType[] = await sanityFetch({
+  // Use the updated client to fetch job data with proper typing
+  const jobs = await sanityFetch<JobType[]>({
     query: jobQuery,
     tags: ["job"],
   });
+  
+  // Handle potential null response
+  const jobList = jobs || [];
 
   return (
     <section className="mt-32">
@@ -24,10 +29,10 @@ export default async function Job() {
         </div>
       </Slide>
 
-      {jobs.length > 0 ? (
+      {jobList.length > 0 ? (
         <Slide delay={0.18}>
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-12 gap-y-10">
-            {jobs.map((job) => (
+            {jobList.map((job) => (
               <div
                 key={job._id}
                 className="flex items-start lg:gap-x-6 gap-x-4 max-w-2xl relative before:absolute before:bottom-0 before:top-[5rem] before:left-9 before:w-[1px] before:h-[calc(100%-70px)] dark:before:bg-zinc-800 before:bg-zinc-200"

@@ -6,6 +6,7 @@ import EmptyState from "../shared/EmptyState";
 import { BiSolidTime, BiTime } from "react-icons/bi";
 import { formatDate } from "../../utils/date";
 import { HiCalendar } from "react-icons/hi";
+// Import the updated Sanity client
 import { sanityFetch } from "@/lib/sanity.client";
 import { readTime } from "@/app/utils/readTime";
 import { toPlainText } from "@portabletext/react";
@@ -14,16 +15,20 @@ const fallbackImage: string =
   "https://res.cloudinary.com/victoreke/image/upload/v1692608339/victoreke/blog.png";
 
 export default async function Posts() {
-  const posts: PostType[] = await sanityFetch({
+  // Use the updated client to fetch posts with proper typing
+  const posts = await sanityFetch<PostType[]>({
     query: postsQuery,
-    tags: ["Post"],
+    tags: ["post"],
   });
+  
+  // Handle potential null response
+  const postList = posts || [];
 
   return (
     <section>
-      {posts.length > 0 ? (
+      {postList.length > 0 ? (
         <div className="flex flex-col lg:max-w-[950px] max-w-full lg:gap-y-8 gap-y-12 mb-12">
-          {posts.map((post) =>
+          {postList.map((post) =>
             post.isPublished !== true ? null : (
               <article key={post._id}>
                 <Link

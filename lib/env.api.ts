@@ -1,26 +1,14 @@
-export const projectId = checkValue(
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  "NEXT_PUBLIC_SANITY_PROJECT_ID",
-  "https://sanity.io"
-);
+// Environment variables for Sanity configurations with fallbacks
+export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '7vd3t7cq'
+export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
+export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-05-28'
+export const token = process.env.NEXT_PUBLIC_SANITY_ACCESS_TOKEN || 'skwg4ObtEPpMYC9fMiVGBM8zjPIhQVUAplMC5F81zLFUjYQOxowMgoMIff6aFF5Rk2NUTRXHW2mNoY9bvkUxIzFnaKfdBVjfr6N6OMLzOdIA15Q4yqyRdUiB7Tq5MOojBvcV4RpPwDU8M42suu6p3UapX8I38gnN31eeJWN2JgJbHG9VdmLj'
 
-export const dataset: string = checkValue(
-  process.env.NEXT_PUBLIC_SANITY_DATASET,
-  "NEXT_PUBLIC_SANITY_DATASET",
-  "https://sanity.io"
-);
-
-export const token = checkValue(
-  process.env.SANITY_ACCESS_TOKEN || process.env.NEXT_PUBLIC_SANITY_ACCESS_TOKEN,
-  "SANITY_ACCESS_TOKEN",
-  "https://sanity.io"
-);
+// Additional configuration settings
+export const mode = process.env.NODE_ENV || 'development'
+export const useCdn = mode === 'production'
 
 export const hookSecret = process.env.SANITY_HOOK_SECRET || process.env.NEXT_PUBLIC_SANITY_HOOK_SECRET;
-export const mode = process.env.NODE_ENV;
-
-export const apiVersion =
-  process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2023-07-21";
 
 export const giscusRepoId = checkValue(
   process.env.NEXT_PUBLIC_GISCUS_REPOID,
