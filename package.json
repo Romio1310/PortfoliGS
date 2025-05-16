@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next lint && next build",
     "start": "next start",
-    "vercel-build": "npm install --legacy-peer-deps && npm run build"
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "@giscus/react": "^2.3.0",
