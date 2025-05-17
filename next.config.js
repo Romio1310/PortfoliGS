@@ -38,27 +38,23 @@ const nextConfig = {
       },
     ];
   },
-  // Set strict mode to true for development
-  reactStrictMode: true,
+  // Set strict mode to false to avoid double-rendering issues with React hooks
+  reactStrictMode: false,
   // Fix for ESM modules in Sanity
-  transpilePackages: ['@sanity', 'sanity', '@sanity/code-input', 'date-fns'],
+  transpilePackages: ['@sanity', 'sanity', '@sanity/code-input', '@sanity/table', 'date-fns'],
   // Fix for module resolution and ESM compatibility issues
   experimental: {
     esmExternals: 'loose',
-    serverComponentsExternalPackages: ['@sanity/ui', 'framer-motion']
+    serverComponentsExternalPackages: ['@sanity/ui', 'framer-motion'],
   },
   // Handle framer-motion properly in webpack
-  webpack: (config) => {
-    config.module = config.module || {};
-    config.module.rules = config.module.rules || [];
-    config.module.rules.push({
-      test: /node_modules\/@sanity\/ui\/.*\/framer-motion\/.*/,
-      resolve: {
-        alias: {
-          'framer-motion': require.resolve('framer-motion'),
-        },
-      },
-    });
+  webpack: (config, { isServer }) => {
+    // Only modify client-side configuration
+    if (!isServer) {
+      // Don't use the motion shim on server or client for now
+      // We'll handle compatibility in each component
+    }
+    
     return config;
   },
 }
